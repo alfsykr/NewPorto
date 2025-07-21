@@ -12,12 +12,16 @@ import rfidImage from "../assets/images/RFID.png";
 import sampahwebsite from "../assets/images/sampah-website.png";
 import electricalmonitoringImage from "../assets/images/electrical-monitoring.png";
 import tempmonitoringImage from "../assets/images/Temp-Monitoring.jpg";
+import userperpusImage from "../assets/images/user-perpus.png";
 
 interface Project {
   id: number;
   title: string;
   description: string;
   image: string;
+  techs?: string[]; // Tambahan untuk badge teknologi
+  demoLink?: string; // Tambahan untuk link demo
+  codeLink?: string; // Tambahan untuk link code
 }
 
 const Projects: React.FC = () => {
@@ -31,6 +35,17 @@ const Projects: React.FC = () => {
       description:
         "A real-time monitoring system that tracks CPU temperature using AIDA64 and room temperature using SHT20 sensor, providing comprehensive thermal monitoring for computer systems.",
       image: cpuMonitoringImage,
+      techs: [
+        "Python",
+        "Arduino",
+        "Firebase",
+        "NextJS",
+        "TypeScript",
+        "Tailwind CSS",
+        "AIDA64",
+      ],
+      demoLink: "https://lab-monitor.vercel.app/", // Ganti dengan link demo asli jika ada
+      codeLink: "https://github.com/alfsykr/SkripsiMonitoring.git", // Ganti dengan link code asli jika ada
     },
     {
       id: 6,
@@ -38,13 +53,28 @@ const Projects: React.FC = () => {
       description:
         "FavroitesMovies is a modern and responsive movie web application built using React. It features a clean UI that displays popular movies, allows users to add titles to their Watchlist or Favorites, and includes search functionality. ",
       image: moviesWebsiteImage,
+      techs: ["ReactJS", "TailwindCSS", "NextJS", "Supabase", "TMDB API"],
+      demoLink: "https://v0-react-movies-website.vercel.app/", // Ganti dengan link demo asli jika ada
+      codeLink: "https://github.com/alfsykr/newmoviess.git", // Ganti dengan link code asli jika ada
     },
     {
       id: 0,
       title: "RFID-based Library Web App",
       description:
-        "A web application for library management using RFID technology. The system allows users to borrow books by tapping their RFID cards. The UID of the book and the member's card are read via RFID, then the data is sent to Firebase for real-time processing and storage. This enables efficient, contactless book borrowing and member management.",
+        "An RFID-based library management web app with two user roles: admin and user. Users borrow books contactlessly using RFID cards, with UID data sent to Firebase in real time. Admins manage books, members, and borrowing history via a dashboard. The system streamlines library operations and improves user experience through automation and contactless interaction.",
       image: rfidImage,
+      techs: [
+        "Arduino",
+        "NodeJS",
+        "Firebase",
+        "RFID",
+        "ExpressJS",
+        "JavaScript",
+        "html",
+        "CSS",
+      ],
+      demoLink: "https://admin-perpus.vercel.app/", // Ganti dengan link demo asli jika ada
+      codeLink: "https://github.com/alfsykr/AdminPerpus.git", // Ganti dengan link code asli jika ada
     },
     {
       id: 9,
@@ -53,6 +83,7 @@ const Projects: React.FC = () => {
       description:
         "A tool that can monitor temperature and humidity levels in the server room, ensuring optimal conditions for equipment performance.",
       image: tempmonitoringImage,
+      techs: ["Arduino IDE", "C++", "SHT20 Sensor", "Modbus", "ESP32", "RS485"],
     },
     {
       id: 7,
@@ -60,6 +91,28 @@ const Projects: React.FC = () => {
       description:
         "A website that provides information about sorting plastic waste and calculating the profit price of its sale, and calculating it in real time from the waste sorting tool.",
       image: sampahwebsite,
+      techs: [
+        "ReactJS",
+        "TailwindCSS",
+        "NextJS",
+        "Firebase",
+        "TypeScript",
+        "Arduino IDE",
+        "C++",
+        "ESP32",
+      ],
+      demoLink: "https://ecoprofit.vercel.app/", // Ganti dengan link demo asli jika ada
+      codeLink: "https://github.com/alfsykr/PemilahanSampah.git", // Ganti dengan link code asli jika ada
+    },
+    {
+      id: 10,
+      title: "User Library",
+      description:
+        "A user-friendly library management system that enables users to borrow books, track their borrowing history, manage their library accounts, and receive timely book return reminders for a more organized reading experience.",
+      image: userperpusImage,
+      techs: ["ReactJS", "TailwindCSS", "NextJS", "Firebase", "TypeScript"],
+      demoLink: "https://web-userss.vercel.app/", // Ganti dengan link demo asli jika ada
+      codeLink: "https://github.com/alfsykr/WebUser.git",
     },
     {
       id: 8,
@@ -67,6 +120,9 @@ const Projects: React.FC = () => {
       description:
         "A system that monitors electrical usage in real-time, providing insights into energy consumption and efficiency.",
       image: electricalmonitoringImage,
+      techs: ["ReactJS", "TailwindCSS", "NextJS", "Firebase", "TypeScript"],
+      demoLink: "#", // Ganti dengan link demo asli jika ada
+      codeLink: "https://github.com/alfsykr/ListrikMonitoring.git", // Ganti dengan link code asli jika ada
     },
     {
       id: 2,
@@ -74,6 +130,9 @@ const Projects: React.FC = () => {
       description:
         "A complete blog system with user authentication, post management, and comments functionality built with Laravel framework and modern web technologies.",
       image: laravelBlogImage,
+      techs: ["Laravel", "PHP", "MySQL", "HTML", "CSS", "JavaScript"],
+      demoLink: "#", // Ganti dengan link demo asli jika ada
+      codeLink: "https://github.com/alfsykr/raven.git", // Ganti dengan link code asli jika ada
     },
     {
       id: 3,
@@ -81,6 +140,9 @@ const Projects: React.FC = () => {
       description:
         "A comprehensive student admission system (PPDB) with registration, data processing, and reporting features using Python backend and MongoDB database.",
       image: ppdbSystemImage,
+      techs: ["Python", "MongoDB", "Flask", "HTML", "CSS", "JavaScript"],
+      demoLink: "https://ppdb-mis-hubbul-wathan.glitch.me/", // Ganti dengan link demo asli jika ada
+      codeLink: "#", // Ganti dengan link code asli jika ada
     },
     {
       id: 5,
@@ -88,6 +150,17 @@ const Projects: React.FC = () => {
       description:
         "A professional landing page for InterGreen plant store featuring plant data management with MySQL database, customer messaging system via email integration, and comprehensive plant catalog management.",
       image: intergreenWebsiteImage,
+      techs: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "MySQL",
+        "PHP",
+        "Bootstrap",
+        "PHPmyAdmin",
+      ],
+      demoLink: "#", // Ganti dengan link demo asli jika ada
+      codeLink: "https://github.com/alfsykr/Intergreen.git", // Ganti dengan link code asli jika ada
     },
 
     {
@@ -96,7 +169,9 @@ const Projects: React.FC = () => {
       description:
         "A control system for 4-degree-of-freedom robotic arm with real-time movement control and position tracking capabilities.",
       image: robotArmImage,
+      techs: ["Arduino", "C++", "Servo Motors", "Robotics", "ESP32"],
     },
+    
   ];
 
   return (
@@ -161,6 +236,108 @@ const Projects: React.FC = () => {
                 <p className="text-gray-600 dark:text-gray-400 mb-4">
                   {project.description}
                 </p>
+                {/* Badge teknologi */}
+                {project.techs && (
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.techs.map((tech) => {
+                      // Mapping warna untuk setiap teknologi populer
+                      const techColors: Record<string, string> = {
+                        html: "bg-orange-500",
+                        HTML: "bg-orange-500",
+                        CSS: "bg-blue-500",
+                        JavaScript: "bg-yellow-400 text-gray-900",
+                        TypeScript: "bg-blue-400",
+                        ReactJS: "bg-cyan-500",
+                        TailwindCSS: "bg-teal-400",
+                        NextJS: "bg-gray-900 text-white border border-gray-300",
+                        Firebase: "bg-amber-400 text-gray-900",
+                        Python: "bg-blue-600",
+                        Arduino: "bg-green-600",
+                        "Arduino IDE": "bg-green-700",
+                        "C++": "bg-indigo-700",
+                        PHP: "bg-indigo-400",
+                        Laravel: "bg-red-500",
+                        MySQL: "bg-blue-700",
+                        MongoDB: "bg-green-700",
+                        Flask: "bg-gray-700",
+                        ExpressJS: "bg-blue-800",
+                        Bootstrap: "bg-purple-600",
+                        "PHP Mailer": "bg-pink-400",
+                        PHPmyAdmin: "bg-orange-300 text-gray-900",
+                        AIDA64: "bg-gray-400 text-gray-900",
+                        "SHT20 Sensor": "bg-lime-500 text-gray-900",
+                        Modbus: "bg-yellow-700",
+                        RS485: "bg-gray-500",
+                        ESP32: "bg-blue-800",
+                        "Servo Motors": "bg-yellow-600 text-gray-900",
+                        Robotics: "bg-emerald-600",
+                        RFID: "bg-pink-500",
+                        TMDB: "bg-green-400 text-gray-900",
+                        "TMDB API": "bg-green-400 text-gray-900",
+                      };
+                      const colorClass = techColors[tech] || "bg-purple-400";
+                      return (
+                        <span
+                          key={tech}
+                          className={`px-3 py-1 rounded-full text-xs font-semibold ${colorClass}`}
+                        >
+                          {tech}
+                        </span>
+                      );
+                    })}
+                  </div>
+                )}
+                {/* Tombol Demo dan Code */}
+                {(project.demoLink || project.codeLink) && (
+                  <div className="flex gap-4 mt-2">
+                    {project.demoLink && (
+                      <a
+                        href={project.demoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center px-6 py-2 bg-cyan-400 hover:bg-cyan-500 text-white rounded-full font-semibold shadow transition-colors duration-300"
+                      >
+                        <svg
+                          className="w-5 h-5 mr-2"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M15 10l4.553 2.276A2 2 0 0121 14.09V17a2 2 0 01-2 2H5a2 2 0 01-2-2v-2.91a2 2 0 01.447-1.314L8 10m7-4V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2m6 0H6"
+                          />
+                        </svg>
+                        Demo
+                      </a>
+                    )}
+                    {project.codeLink && (
+                      <a
+                        href={project.codeLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center px-6 py-2 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-50 rounded-full font-semibold transition-colors duration-300"
+                      >
+                        <svg
+                          className="w-5 h-5 mr-2"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M16 18l6-6-6-6M8 6l-6 6 6 6"
+                          />
+                        </svg>
+                        Code
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           ))}

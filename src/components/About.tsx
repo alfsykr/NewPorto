@@ -112,7 +112,7 @@ const About: React.FC = () => {
               <div className="flex items-center">
                 <div className="w-2 h-2 rounded-full bg-primary-500 mr-2"></div>
                 <span className="text-gray-700 dark:text-gray-300">
-                  Laravel
+                  Arduino
                 </span>
               </div>
               <div className="flex items-center">
@@ -130,7 +130,7 @@ const About: React.FC = () => {
               <div className="flex items-center">
                 <div className="w-2 h-2 rounded-full bg-primary-500 mr-2"></div>
                 <span className="text-gray-700 dark:text-gray-300">
-                  MongoDB & SQL
+                  Firebase & SQL
                 </span>
               </div>
             </div>
