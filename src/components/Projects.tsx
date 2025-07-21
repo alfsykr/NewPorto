@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useInView } from "../hooks/useInView";
 
 // Import gambar dari src/assets/images/
@@ -26,7 +26,14 @@ interface Project {
 
 const Projects: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { threshold: 0.1 });
+  const isInView = useInView(sectionRef, { threshold: 0.05 });
+  const [hasBeenInView, setHasBeenInView] = useState(false);
+
+  useEffect(() => {
+    if (isInView && !hasBeenInView) {
+      setHasBeenInView(true);
+    }
+  }, [isInView, hasBeenInView]);
 
   const projects: Project[] = [
     {
@@ -184,7 +191,7 @@ const Projects: React.FC = () => {
         <div className="text-center mb-16">
           <h2
             className={`text-3xl sm:text-4xl font-bold mb-4 transition-all duration-700 transform ${
-              isInView
+              hasBeenInView
                 ? "translate-y-0 opacity-100"
                 : "translate-y-10 opacity-0"
             }`}
@@ -193,12 +200,12 @@ const Projects: React.FC = () => {
           </h2>
           <div
             className={`w-20 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto mb-8 transition-all duration-700 delay-100 ${
-              isInView ? "w-20 opacity-100" : "w-0 opacity-0"
+              hasBeenInView ? "w-20 opacity-100" : "w-0 opacity-0"
             }`}
           ></div>
           <p
             className={`max-w-2xl mx-auto text-gray-700 dark:text-gray-300 transition-all duration-700 delay-200 ${
-              isInView ? "opacity-100" : "opacity-0"
+              hasBeenInView ? "opacity-100" : "opacity-0"
             }`}
           >
             Here are some of my recent projects that showcase my skills and
@@ -214,7 +221,7 @@ const Projects: React.FC = () => {
               className={`group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-xl transform hover:-translate-y-2 transition-all duration-700 delay-${
                 400 + index * 100
               } ${
-                isInView
+                hasBeenInView
                   ? "translate-y-0 opacity-100"
                   : "translate-y-10 opacity-0"
               }`}
@@ -295,22 +302,11 @@ const Projects: React.FC = () => {
                         href={project.demoLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center px-6 py-2 bg-cyan-400 hover:bg-cyan-500 text-white rounded-full font-semibold shadow transition-colors duration-300"
+                        className="flex items-center px-6 py-2 bg-gradient-to-r from-emerald-400 to-green-600 hover:from-green-600 hover:to-emerald-400 text-white rounded-full font-semibold shadow-lg transition-all duration-300 scale-100 hover:scale-105"
                       >
-                        <svg
-                          className="w-5 h-5 mr-2"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M15 10l4.553 2.276A2 2 0 0121 14.09V17a2 2 0 01-2 2H5a2 2 0 01-2-2v-2.91a2 2 0 01.447-1.314L8 10m7-4V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2m6 0H6"
-                          />
-                        </svg>
-                        Demo
+                        {/* Ikon external link */}
+                        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Link
                       </a>
                     )}
                     {project.codeLink && (
@@ -318,21 +314,10 @@ const Projects: React.FC = () => {
                         href={project.codeLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center px-6 py-2 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-50 rounded-full font-semibold transition-colors duration-300"
+                        className="flex items-center px-6 py-2 border-2 border-blue-600 text-blue-600 bg-white hover:bg-blue-600 hover:text-white active:bg-blue-700 active:text-white rounded-full font-semibold transition-all duration-300 scale-100 hover:scale-105"
                       >
-                        <svg
-                          className="w-5 h-5 mr-2"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M16 18l6-6-6-6M8 6l-6 6 6 6"
-                          />
-                        </svg>
+                        {/* Ikon GitHub */}
+                        <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.847-2.337 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .267.18.579.688.481C19.138 20.203 22 16.447 22 12.021 22 6.484 17.523 2 12 2z"/></svg>
                         Code
                       </a>
                     )}
